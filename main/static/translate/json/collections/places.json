@@ -1,0 +1,122 @@
+[
+  {
+    "tr": "Ev",
+    "en": "House"
+  },
+  {
+    "tr": "Oda",
+    "en": "Room"
+  },
+  {
+    "tr": "Kapı",
+    "en": "Door"
+  },
+  {
+    "tr": "Pencere",
+    "en": "Window"
+  },
+  {
+    "tr": "Mutfak",
+    "en": "Kitchen"
+  },
+  {
+    "tr": "Banyo",
+    "en": "Bathroom"
+  },
+  {
+    "tr": "Yatak Odası",
+    "en": "Bedroom"
+  },
+  {
+    "tr": "Sokak",
+    "en": "Street"
+  },
+  {
+    "tr": "Şehir",
+    "en": "City"
+  },
+  {
+    "tr": "Köy",
+    "en": "Village"
+  },
+  {
+    "tr": "Bina",
+    "en": "Building"
+  },
+  {
+    "tr": "Mağaza",
+    "en": "Store / Shop"
+  },
+  {
+    "tr": "Market",
+    "en": "Market"
+  },
+  {
+    "tr": "Okul",
+    "en": "School"
+  },
+  {
+    "tr": "Hastane",
+    "en": "Hospital"
+  },
+  {
+    "tr": "Park",
+    "en": "Park"
+  },
+  {
+    "tr": "Ağaç",
+    "en": "Tree"
+  },
+  {
+    "tr": "Çiçek",
+    "en": "Flower"
+  },
+  {
+    "tr": "Güneş",
+    "en": "Sun"
+  },
+  {
+    "tr": "Yağmur",
+    "en": "Rain"
+  },
+  {
+    "tr": "Kar",
+    "en": "Snow"
+  },
+  {
+    "tr": "Deniz",
+    "en": "Sea"
+  },
+  {
+    "tr": "Dağ",
+    "en": "Mountain"
+  },
+  {
+    "tr": "Otel",
+    "en": "Hotel"
+  },
+  {
+    "tr": "Restoran",
+    "en": "Restaurant"
+  },
+  {
+    "tr": "Banka",
+    "en": "Bank"
+  },
+  {
+    "tr": "Postane",
+    "en": "Post Office"
+  },
+  {
+    "tr": "Köprü",
+    "en": "Bridge"
+  },
+  {
+    "tr": "Yol",
+    "en": "Road / Way"
+  },
+  {
+    "tr": "Araba",
+    "en": "Car"
+  }
+]

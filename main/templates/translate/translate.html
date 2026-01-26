@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Translate{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="{% static 'translate/css/translate.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="main_page">
+    <div id="translateWord">
+        <h1>Welcome to <br>Translator</h1>
+        <input id="word_input" type="text" list="match_words" placeholder="Enter a word for translating">
+        <datalist id="match_words"></datalist>
+        <select name="lang" id="lang">
+            <option value="" selected>Select a language</option>
+            <option value="trToen">tr to en</option>
+            <option value="enTotr">en to tr</option>
+        </select>
+        <br>
+        <button onclick="ConvertButton()" id="convert_button">Convert</button>
+        <div class="result_area">
+            <p id="result"></p>
+            <button id="addMyDict" onclick="addMyDict()">Add My<br>Dict</button>
+        </div>
+    </div>
+    <div id="addDict">
+        <p><label for="word">Word:
+                <input type="text" id="word"></label></p>
+        <p><label for="translation">Translation:
+                <input type="text" id="translation"></label></p>
+        <label for="dicts">Choose Your Dictionary:</label>
+        <select name="dicts" id="dicts">
+            <option value="" selected>Select a dict</option>
+        </select>
+        <br>
+        <button onclick="saveButton()" data-bs-toggle="modal" data-bs-target="#successModal">Save</button>
+    </div>
+</div>
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="succesfullModalLabel"><i class="bi bi-check2-circle"></i>   Succesfull! 🎉</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>You have added your word into your personal dictionary <strong><span id="dict_name"></span></strong> successfully!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="addDictClose()">Close</button>
+                        <a class="btn btn-outline-primary" id="seeDict">See Dictionary</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% url 'dict_details' dict_id=0 as base_url_val %}
+{{ base_url_val|json_script:"baseurl-data" }}
+<script>
+    const json_url = "{% static 'translate/json/words.json' %}"
+</script>
+<script src="{% static 'translate/scripts/translate.js' %}"></script>
+
+{% endblock %}

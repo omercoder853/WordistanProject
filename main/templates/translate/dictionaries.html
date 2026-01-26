@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dictionaries{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'translate/css/dictionaries.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div id="dict_body">
+    <h1>Personal Dictionaries</h1>
+    <div class="default_dict_page">
+        <p id="def_dict_text">There is no personal dictionaries yet. You can create a new one by using adding button
+            which is placed the buttom-right!</p>
+    </div>
+    <div id="try">
+        <div class="list-group" id="dictionaries_list">
+            <!-- Dictionary items will be added here dynamically -->
+        </div>
+    </div>
+    <div id="add_New_Dict">
+        <button type="button" class="close-form-btn" onclick="closeForm()" aria-label="Close">×</button>
+        <form id="add_dict_form">
+            <p><label for="dict_name">Dictionary Name: <br>
+                    <input type="text" id="dict_name"></label></p>
+            <p><label for="dict_descrpt">Enter a short description: <br>
+                    <input type="text" id="dict_descrpt"></label></p>
+            <label>Translation Direction:</label>
+            <div class="language-selection">
+                <div class="language-option">
+                    <input type="radio" id="tr_to_eng" name="translation_direction" value="TR to ENG" checked>
+                    <label for="tr_to_eng">TR → ENG</label>
+                </div>
+                <div class="language-option">
+                    <input type="radio" id="eng_to_tr" name="translation_direction" value="ENG to TR">
+                    <label for="eng_to_tr">ENG → TR</label>
+                </div>
+            </div>
+            <br>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+<button type="button" class="btn btn-outline-success" id="add_dict_button" onclick="addNewDict()">+</button>
+{% url 'dict_details' dict_id=0 as base_url_val %}
+{{ base_url_val|json_script:"baseurl-data" }}
+<script src="{% static 'translate/scripts/dictionaries.js' %}"></script>
+{% else %}
+<h1>If you want to create a <br>new dictionary, <br> you must login.</h1>
+{% endif %}
+{% endblock %}

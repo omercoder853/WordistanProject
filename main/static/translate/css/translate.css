@@ -1,0 +1,562 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, rgba(248, 243, 255, 0.5), rgba(252, 238, 245, 0.5));
+    background-size: 200% 200%;
+    animation: backgroundGradient 8s ease infinite;
+    padding: 40px 20px;
+    color: #333;
+    min-height: 100vh;
+}
+
+@keyframes backgroundGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#main_page {
+    padding-top: 100px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    transition: grid-template-columns 0.6s ease;
+}
+
+#main_page>* {
+    transition: all 0.6s ease;
+}
+
+
+/* Heading */
+h1 {
+    grid-column: 1;
+    text-align: center;
+    color: #6b3fa0;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #b565f5, #e86ad0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInDown 0.8s ease;
+    line-height: 1.2;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Input Field */
+#word_input {
+    grid-column: 1;
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 20px;
+    padding: 16px 20px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: 2px solid rgba(181, 101, 245, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(181, 101, 245, 0.15);
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#word_input:focus {
+    background: #ffffff;
+    border-color: #b565f5;
+    box-shadow: 0 0 0 4px rgba(181, 101, 245, 0.15), 0 6px 20px rgba(181, 101, 245, 0.2);
+    transform: translateY(-2px);
+}
+
+#word_input:hover {
+    border-color: #e86ad0;
+    transform: translateY(-1px);
+}
+
+#word_input::placeholder {
+    color: #aaa;
+}
+
+/* Datalist */
+datalist {
+    display: none;
+}
+
+/* Select Dropdown */
+#lang {
+    grid-column: 1;
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 20px;
+    text-align: center;
+    padding: 16px 45px 16px 20px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: 2px solid rgba(181, 101, 245, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b565f5' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    color: #333;
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(181, 101, 245, 0.15);
+    animation: fadeInUp 1s ease;
+}
+
+#lang:hover {
+    background-color: #ffffff;
+    border-color: #e86ad0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(181, 101, 245, 0.2);
+}
+
+#lang:focus {
+    border-color: #b565f5;
+    box-shadow: 0 0 0 4px rgba(181, 101, 245, 0.15), 0 6px 20px rgba(181, 101, 245, 0.2);
+}
+
+#lang option {
+    background: #ffffff;
+    color: #333;
+    padding: 10px;
+}
+
+/* Line Break */
+br {
+    display: block;
+    margin: 0;
+    line-height: 0;
+    height: 0;
+}
+
+/* Convert Button */
+#convert_button {
+    grid-column: 1;
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 20px;
+    padding: 16px 30px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 15px;
+    border: none;
+    background: linear-gradient(135deg, #b565f5, #e86ad0);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(181, 101, 245, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1.2s ease;
+}
+
+#convert_button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+#convert_button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+#convert_button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(181, 101, 245, 0.5),
+        0 2px 10px rgba(232, 106, 208, 0.3);
+}
+
+#convert_button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 15px rgba(181, 101, 245, 0.4);
+}
+
+
+
+
+
+/* Result Area*/
+.result_area {
+    grid-column: 1;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(181, 101, 245, 0.15);
+    min-height: 80px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 243, 255, 0.95));
+    border: 3px solid rgba(181, 101, 245, 0.3);
+    transition: all 0.3s ease;
+    text-align: center;
+    gap: 15px;
+    padding: 5px;
+    animation: fadeInUp 1.4s ease;
+}
+
+.result_area:hover {
+    box-shadow: 0 12px 35px rgba(181, 101, 245, 0.25);
+    border-color: rgba(181, 101, 245, 0.5);
+    transform: translateY(-2px);
+}
+
+#result {
+    font-size: 1.5rem;
+    color: #6b3fa0;
+    font-weight: 600;
+    word-wrap: break-word;
+    width: 100%;
+    border-radius: 12px;
+    padding: 15px;
+    animation: fadeIn 0.5s ease;
+    margin-bottom: 0px;
+}
+
+
+/*Add my dict button*/
+#addMyDict {
+    display: none;
+    width: auto;
+    min-width: 120px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #b565f5, #e86ad0);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(181, 101, 245, 0.3);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+#addMyDict:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(181, 101, 245, 0.4);
+}
+
+#addMyDict:active {
+    transform: translateY(0);
+}
+
+/*Add my dict page*/
+#addDict {
+    display: none;
+    grid-column: 2;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 243, 255, 0.95));
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(181, 101, 245, 0.2);
+    border: 3px solid rgba(181, 101, 245, 0.3);
+    transition: all 0.6s ease;
+    max-width: 450px;
+    width: 90%;
+    opacity: 0;
+    transform: translateX(30px);
+    animation: slideInRight 0.6s ease forwards;
+    height: 85%;
+}
+
+#addDict[style*="display: block"] {
+    display: block !important;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#translateWord {
+    grid-column: 1;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 243, 255, 0.95));
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(181, 101, 245, 0.15);
+    border: 3px solid rgba(181, 101, 245, 0.3);
+    animation: fadeInUp 0.8s ease;
+    transition: all 0.6s ease;
+    justify-self: center;
+}
+
+#translateWord:hover {
+    box-shadow: 0 20px 60px rgba(181, 101, 245, 0.25);
+    border-color: rgba(181, 101, 245, 0.5);
+    transform: translateY(-3px);
+}
+
+#addDict p {
+    margin-bottom: 20px;
+}
+
+#addDict label {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#addDict input[type="text"] {
+    width: 100%;
+    padding: 15px 15px 15px 25px;
+    font-size: 1.4rem;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+#addDict input[type="text"]:focus {
+    background: #ffffff;
+    border-color: #b565f5;
+    box-shadow: 0 0 0 4px rgba(181, 101, 245, 0.15), 0 6px 20px rgba(181, 101, 245, 0.2);
+    transform: translateY(-2px);
+}
+
+#addDict input[type="text"]:hover {
+    border-color: #e86ad0;
+    transform: translateY(-1px);
+}
+
+#addDict select {
+    width: 100%;
+    padding: 16px 45px 16px 20px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: 2px solid rgba(181, 101, 245, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b565f5' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    color: #333;
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(181, 101, 245, 0.15);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#addDict select:hover {
+    background-color: #ffffff;
+    border-color: #e86ad0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(181, 101, 245, 0.2);
+}
+
+#addDict select:focus {
+    border-color: #b565f5;
+    box-shadow: 0 0 0 4px rgba(181, 101, 245, 0.15), 0 6px 20px rgba(181, 101, 245, 0.2);
+}
+
+#addDict button {
+    width: 100%;
+    padding: 16px 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 15px;
+    border: none;
+    background: linear-gradient(135deg, #b565f5, #e86ad0);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(181, 101, 245, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+#addDict button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+#addDict button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+#addDict button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(181, 101, 245, 0.5),
+        0 2px 10px rgba(232, 106, 208, 0.3);
+}
+
+#addDict button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 15px rgba(181, 101, 245, 0.4);
+}
+
+/* Animation for result when content changes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#result_area.fade-in #result {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    #translateWord {
+        padding: 30px 20px;
+    }
+
+    #word_input,
+    #lang,
+    #convert_button {
+        max-width: 100%;
+    }
+
+    #lang {
+        padding-right: 40px;
+        background-position: right 16px center;
+    }
+
+    .result_area {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    #result {
+        font-size: 1.2rem;
+    }
+
+    #addDict {
+        padding: 30px 20px;
+        margin: 20px auto;
+    }
+}
+
+/* Error state for select when language not selected */
+#lang.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.15);
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+#success_alert {
+    display: none;
+}

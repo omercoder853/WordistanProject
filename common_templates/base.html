@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator | {% block title %}{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block css %}{% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top d-flex align-items-center" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+                <img src="{% static 'images/wordistan_logo.png' %}" alt="Wordistan Logo" width="45"
+                    class="d-inline-block align-text-top me-2">
+                <span id="brand_text">Wordistan</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar_items">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/index' %}active{% endif %}" aria-current="page"
+                            href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/translate' %}active{% endif %}" aria-current="page"
+                            href="{% url 'translate' %}">Translate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/dictionaries' %}active{% endif %}"
+                            aria-current="page" href="{% url 'dictionaries' %}">Dictionaries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/games' %}active{% endif %}" aria-current="page"
+                            href="{% url 'games' %}">Word Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/collections' %}active{% endif %}" aria-current="page"
+                            href="{% url 'collections' %}">Collections</a>
+                    </li>
+                </ul>
+                {% if user.is_authenticated %}
+                <div id="profile_section" class="ms-auto d-flex align-items-center me-5">
+                    <span class="pacifico-regular">Welcome, </span>
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown ">
+                                <button class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                                    style="font-size: x-large;" aria-expanded="false">
+                                    {{ user.first_name }}
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Log out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline" style="background-color: purple; color: white;">Login</a>
+                <a href="{% url 'register' %}" class="btn btn-outline" style="background-color: rgb(203, 0, 203); color: white; margin-left: 15px;">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

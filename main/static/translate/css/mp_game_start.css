@@ -1,0 +1,176 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+#game_area
+{
+    margin-top: 50px;
+    width: 40%;
+    background-color: rgba(146, 171, 5, 0.2);
+    border-radius: 25px;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+#control_buttons
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.control__button
+{
+    border-radius: 15px;
+    padding: 8px 12px 8px 12px;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+}
+
+.row{
+    margin-bottom: 0.65rem;
+    margin-top: 0.65rem;
+}
+
+.word_option{
+    padding: 0.45rem;
+    border-radius: 8px;
+    outline: none;
+    margin-bottom: 0.5rem;
+}
+
+.answer_option{
+    padding: 0.45rem;
+    border-radius: 8px;
+    outline: none;
+    margin-bottom: 0.5rem;
+}
+
+.clicked {
+    background-color: cadetblue;
+}
+
+.success{
+    background-color: green;
+    color: white;
+    font-weight: bolder;
+}
+
+.wrong{
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+}
+
+#game_result
+{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 60%;
+    background-color: rgba(237, 152, 135, 0.15);
+    border-radius: 25px;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+#result_row{
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: 0.7rem;
+    width: 60%;
+}
+.row p{
+    margin: 0px;
+    padding: 0.62rem;
+    color: white;
+    font-weight: bolder;
+}
+#mascot_area{
+    width: 100%;
+    display: flex;
+    margin: 0px;
+    justify-content: center;
+    align-items: center;
+}
+#motivation{
+    display: flex;
+    flex-direction: column;
+    animation: opacity_toleft 3s forwards;
+}
+#motivation h1{
+    font-size: 4rem;
+}
+#mascot
+{
+    max-width: 20rem;
+    animation: move_left 3s forwards;
+}
+@keyframes move_left {
+    from {
+        transform: translateX(15rem);
+    }
+    to {
+        transform: translateX(-1rem);
+    }
+}
+@keyframes opacity_toleft
+{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.results_info_area
+{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-left: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+#total_question_area
+{
+    background-color: blue;
+}
+#total_try_area
+{
+    background-color: green;
+}
+#time_passed_area
+{
+    background-color: gray;
+}
+#success_area
+{
+    background-color: purple;
+    margin-left: 2rem;
+}
+
+.results_info
+{
+    text-align: center;
+    background-color: white;
+    width: 75%;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}

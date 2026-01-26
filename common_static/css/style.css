@@ -1,0 +1,40 @@
+html, body {
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f8f8f8, #f3e8ff, #fce3f5, #ececec);
+  background-size: 400% 400%;
+  animation: bgMove 15s ease infinite;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.navbar
+{
+    height: 90px;
+}
+
+#brand_text
+{
+    font-size: xx-large;
+    font-weight:bolder;
+}
+
+#navbar_items
+{
+    font-size: large ;
+}
+
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: x-large;
+}
+

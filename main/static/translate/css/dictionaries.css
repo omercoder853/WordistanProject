@@ -1,0 +1,509 @@
+h1
+{
+    color: #6b3fa0;
+    font-size: 48px;
+    font-weight: 700;
+    margin-top: 150px;
+    text-align: center;
+    background: linear-gradient(135deg, #b565f5, #e86ad0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInDown 0.6s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#try
+{
+    padding-top: 100px;
+}
+#add_dict_button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-weight: 900;
+  font-size: 24px;
+  border-radius: 50%;     /* daire şekli */
+  width: 70px;
+  height: 70px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-size: xx-large;
+}
+.default_dict_page
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+#def_dict_text
+{
+    max-width: 600px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.8;
+    color: #6b3fa0;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 243, 255, 0.9));
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(181, 101, 245, 0.15);
+    border: 2px solid rgba(181, 101, 245, 0.2);
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#try {
+    padding-top: 100px;
+    display: none; /* Başlangıçta gizli, dictionary eklendiğinde gösterilecek */
+}
+
+#try.show {
+    display: block;
+}
+
+.default_dict_page.hide {
+    display: none;
+}
+
+/* Dictionary List Items Styling */
+#dictionaries_list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#dictionaries_list .list-group-item {
+    margin-bottom: 15px;
+    border: 2px solid rgba(181, 101, 245, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    padding-right: 60px; /* Silme butonu için alan */
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 243, 255, 0.95));
+    box-shadow: 0 4px 15px rgba(181, 101, 245, 0.1);
+    animation: slideInItem 0.4s ease;
+    position: relative;
+}
+
+@keyframes slideInItem {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#dictionaries_list .list-group-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(181, 101, 245, 0.2);
+    border-color: rgba(181, 101, 245, 0.4);
+}
+
+#dictionaries_list .list-group-item.active {
+    background: linear-gradient(135deg, rgba(181, 101, 245, 0.15), rgba(232, 106, 208, 0.15));
+    border-color: rgba(181, 101, 245, 0.5);
+    box-shadow: 0 6px 20px rgba(181, 101, 245, 0.25);
+}
+
+#dictionaries_list .list-group-item h5 {
+    color: #6b3fa0;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+#dictionaries_list .list-group-item p {
+    color: #555;
+    margin-bottom: 8px;
+}
+
+#dictionaries_list .list-group-item small {
+    color: #888;
+}
+
+/* Improved dictionary content styling */
+.dict-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.dict-name {
+    color: #6b3fa0;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.dict-description {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.dict-language {
+    display: inline-block;
+    color: #b565f5;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    background: rgba(181, 101, 245, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(181, 101, 245, 0.2);
+}
+
+.dict-date {
+    color: #888;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    margin-left: 15px;
+    padding-top: 2px;
+}
+
+/* Silme butonu */
+.delete-dict-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(220, 53, 69, 0.1);
+    border: 2px solid rgba(220, 53, 69, 0.3);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    line-height: 1;
+    color: #dc3545;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 10;
+}
+
+.delete-dict-btn:hover {
+    background: rgba(220, 53, 69, 0.2);
+    border-color: #dc3545;
+    color: #dc3545;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.delete-dict-btn:active {
+    transform: rotate(90deg) scale(0.95);
+}
+
+/* Detaylar Butonu*/
+.dict_details
+{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: green;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 150px;
+    height: 32px;
+    font-size: 18px;
+    font-weight: bolder;
+    line-height: 1;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 10;
+    text-decoration: none;
+}
+
+.dict_details:hover
+{
+    background: white;
+    color: green;
+    scale: 1.1;
+    border-color: green;
+}
+
+/* Dil seçimi için radio butonlar */
+.language-selection {
+    display: flex;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.language-option {
+    flex: 1;
+    position: relative;
+}
+
+.language-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.language-option label {
+    display: block;
+    padding: 12px 20px;
+    border: 2px solid rgba(181, 101, 245, 0.3);
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    color: #6b3fa0;
+}
+
+.language-option input[type="radio"]:checked + label {
+    background: linear-gradient(135deg, #b565f5, #e86ad0);
+    color: white;
+    border-color: #b565f5;
+    box-shadow: 0 4px 12px rgba(181, 101, 245, 0.3);
+    transform: translateY(-2px);
+}
+
+.language-option label:hover {
+    border-color: #b565f5;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(181, 101, 245, 0.2);
+}
+
+/* Add New Dictionary Form Styling */
+#add_New_Dict {
+    display: none; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #ffffff, #f8f3ff, #fceef5);
+    background-size: 200% 200%;
+    animation: formGradient 6s ease infinite;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(181, 101, 245, 0.3), 
+                0 5px 20px rgba(232, 106, 208, 0.2);
+    max-width: 500px;
+    width: 90%;
+    z-index: 2000;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(181, 101, 245, 0.2);
+    opacity: 0;
+    animation: formSlideIn 0.5s ease forwards;
+}
+
+@keyframes formGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes formSlideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+#add_New_Dict form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#add_New_Dict form p {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#add_New_Dict form label {
+    font-weight: 600;
+    color: #6b3fa0;
+    font-size: 16px;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+#add_New_Dict form label:hover {
+    color: #b565f5;
+}
+
+#add_New_Dict form input[type="text"],
+#add_New_Dict form select {
+    padding: 12px 16px;
+    border: 2px solid rgba(181, 101, 245, 0.3);
+    border-radius: 12px;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    outline: none;
+    color: #333;
+    font-family: inherit;
+}
+
+#add_New_Dict form input[type="text"]:focus,
+#add_New_Dict form select:focus {
+    border-color: #b565f5;
+    box-shadow: 0 0 0 4px rgba(181, 101, 245, 0.15),
+                0 4px 12px rgba(181, 101, 245, 0.2);
+    transform: translateY(-2px);
+    background: #ffffff;
+}
+
+#add_New_Dict form input[type="text"]:hover,
+#add_New_Dict form select:hover {
+    border-color: #e86ad0;
+    transform: translateY(-1px);
+}
+
+#add_New_Dict form select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b565f5' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+#add_New_Dict form button {
+    padding: 14px 30px;
+    background: linear-gradient(135deg, #b565f5, #e86ad0);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(181, 101, 245, 0.4);
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+#add_New_Dict form button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+#add_New_Dict form button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+#add_New_Dict form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(181, 101, 245, 0.5),
+                0 2px 10px rgba(232, 106, 208, 0.3);
+}
+
+#add_New_Dict form button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 15px rgba(181, 101, 245, 0.4);
+}
+
+/* Form başlığı eklemek için (opsiyonel) */
+#add_New_Dict::before {
+    content: 'Create New Dictionary';
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: #6b3fa0;
+    margin-bottom: 25px;
+    text-align: center;
+    background: linear-gradient(135deg, #b565f5, #e86ad0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Kapatma butonu */
+.close-form-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(181, 101, 245, 0.1);
+    border: 2px solid rgba(181, 101, 245, 0.3);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 24px;
+    line-height: 1;
+    color: #6b3fa0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 10;
+}
+
+.close-form-btn:hover {
+    background: rgba(181, 101, 245, 0.2);
+    border-color: #b565f5;
+    color: #b565f5;
+    transform: rotate(90deg) scale(1.1);
+}
+
+.close-form-btn:active {
+    transform: rotate(90deg) scale(0.95);
+}
+
+/* Overlay için */
+.form-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 1999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}

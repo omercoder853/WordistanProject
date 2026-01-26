@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Games{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'translate/css/games.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+{% endblock %}
+{% block content %}
+<div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0"
+    aria-valuemax="100" style="width: 1024px;">
+    <div class="progress-bar" style="width:0px;" id="progress"></div>
+</div>
+<div id="game_category">
+    <div id="game_kind">
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0 game_type" id="wc">
+                <a href="#">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                <img src="{% static 'translate/images/game.png' %}" class="img-fluid rounded-start"
+                                    alt="game">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <h5 class="card-title">Word Completion</h5>
+                                    <p class="card-text">Test your memory and prove your spelling power! Look at the
+                                        provided
+                                        translation and complete the correct corresponding word letter by letter.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0 game_type" id="mcq">
+                <a href="#">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                <img src="{% static 'translate/images/game.png' %}" class="img-fluid rounded-start"
+                                    alt="game">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <h5 class="card-title">Multiple Choice Quiz</h5>
+                                    <p class="card-text">Show off your speed and knowledge! Quickly select the correct 
+                                        translation for the word shown from the options before the time runs out. 
+                                        Prove how fast and sharp you really are!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0 game_type" id="mp">
+                <a href="#">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                <img src="{% static 'translate/images/game.png' %}" class="img-fluid rounded-start"
+                                    alt="game">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <h5 class="card-title">Matching Pairs</h5>
+                                    <p class="card-text">Connect the meanings! Quickly link words on one side with their
+                                        mixed-up translations on the other. Match accurately and fast to strengthen your
+                                        vocabulary.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0 game_type" id="g4">
+                <a href="#">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                <img src="{% static 'translate/images/game.png' %}" class="img-fluid rounded-start"
+                                    alt="game">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <h5 class="card-title">Game 4</h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
+                                        nam
+                                        ab,
+                                        animi eum non deserunt, laudantium nihil cupiditate distinctio doloremque ipsam
+                                        eligendi. Sit, eum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--Choose Words-->
+    <div id="game-words" style="display: none;">
+        <h2>Word Choices</h2>
+        <div id="radio_buttons">
+            <p style="display: inline-block;"><label for="pr_dict"><input type="radio" name="dict_type_choice" id="pr_dict"
+                        value="pr" class="dict_type_radio">Personal Dictionaries</label></p>
+            <p style="display: inline-block; margin-left: 20px;"><label for="clc_dict"><input type="radio"
+                        name="dict_type_choice" id="clc_dict" value="cl" class="dict_type_radio"> Collection
+                    Dictionaries</label></p>
+        </div>
+        <div id="choices"></div>
+        <div class="control_buttons">
+            <button type="button" class="btn control btn-outline-warning" id="back1" onclick="back_fn1()">Back <i
+                    class="bi bi-arrow-left-square"></i></button>
+            <button type="button" class="btn control btn-outline-success" id="next1">Next <i
+                    class="bi bi-arrow-right-square"></i></button>
+        </div>
+    </div>
+    <!--Game Settings-->
+    <div id="game-settings" style="display: none;">
+        <h2><span id="game_name"></span> Settings</h2>
+        <p><label for="num_questions">Number of Questions:
+                <input type="number" id="num_questions" min="5" max="30"></label></p>
+        <p><label for="num_attach">Number of<span id="attach_name"></span>:
+                <input type="number" id="num_attach" min="3" max="5"></label></p>
+        <p><label for="second">Seconds per Question:
+                <input type="number" name="second" id="second" min="5" max="20" class="second"></label></p>
+        <div class="control_buttons">
+            <button type="button" class="btn control btn-outline-warning" id="back2" onclick="back_fn2()">Back <i
+                    class="bi bi-arrow-left-square"></i></button>
+            <button type="button" class="btn control btn-outline-success" id="next2" onclick="next_fn2()">Next <i
+                    class="bi bi-arrow-right-square"></i></button>
+        </div>
+    </div>
+    <!--Game Preview-->
+    <div id="game-prev" style="display: none;">
+        <h2>Game Preview</h2>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Game Kind</th>
+                    <td id="game_kind_table"></td>
+                </tr>
+                <tr>
+                    <th>Dictionary Type</th>
+                    <td id="dict_type"></td>
+                </tr>
+                <tr>
+                    <th>Dict Name</th>
+                    <td id="dict_name"></td>
+                </tr>
+                <tr>
+                    <th>Number of Questions</th>
+                    <td id="num_questions_table"></td>
+                </tr>
+                <tr>
+                    <th>Number of <span id="attach"></span></th>
+                    <td id="num_attach_table"></td>
+                </tr>
+                <tr>
+                    <th>Time</th>
+                    <td id="time_table"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="control_buttons">
+            <button type="button" class="btn control btn-outline-warning" id="back3" onclick="back_fn3('mcq')">Back <i
+                    class="bi bi-arrow-left-square"></i></button>
+            <button type="button" class="btn control btn-outline-success" id="next3" onclick="start_game('mcq')">Start <i
+                    class="bi bi-arrow-right-square"></i></button>
+        </div>
+    </div>
+
+</div>
+<script src="{% static 'translate/scripts/games.js' %}"></script>
+{% endblock %}

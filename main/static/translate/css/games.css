@@ -1,0 +1,585 @@
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    box-sizing: border-box;
+    padding-top: 90px;
+    /* navbar yüksekliği kadar boşluk */
+}
+
+/* Oyun kartlarının bulunduğu ana alan */
+#game_category {
+    width: 100%;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive override for inline width style if present, and general safety */
+@media (max-width: 1040px) {
+    #game_category {
+        max-width: 95%;
+    }
+}
+
+/* Her satırda 2 oyun görünümü için Bootstrap grid'i kullanıyoruz (col-sm-6) */
+.game_type {
+    margin-bottom: 1.5rem;
+    height: 100%;
+}
+
+.game_type .card {
+    height: 100%;
+}
+
+@media (max-width: 991.98px) {
+    .game_type {
+        width: 100% !important;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #game_category {
+        margin-top: 90px;
+    }
+}
+
+.img-fluid {
+    max-width: 100px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.card {
+    width: 100%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(1);
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+
+.card:hover {
+    transform: scale(1.08) translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.card:hover .img-fluid {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.card:hover .card-title {
+    color: #667eea;
+}
+
+.card-text {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.progress {
+    height: 28px;
+    border-radius: 15px;
+    overflow: hidden;
+    max-width: 1023px;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+@media (max-width: 1040px) {
+    .progress {
+        width: 100% !important;
+        max-width: 100%;
+        padding: 0 10px;
+        /* Optional: adds a bit of breathing room if needed, but width 100% is key */
+    }
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 15px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+}
+
+/* Form elements styling */
+#game_kind>.row {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+}
+
+#game_kind>.row>[class*="col-"] {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+/* Settings and words sections */
+[id$="-words"],
+[id$="-settings"],
+[id$="-prev"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    padding-bottom: 2rem;
+    /* Reduced from 5rem since buttons are no longer absolute */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    min-height: 400px;
+    position: relative;
+}
+
+/* Control buttons container */
+.control_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    position: relative;
+    /* Changed from absolute */
+    margin-top: 2rem;
+    /* Added margin to push down from content */
+    bottom: auto;
+    left: auto;
+    transform: none;
+}
+
+/* Buttons */
+.control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+}
+
+.control:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.control:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   WORD CHOICES SECTION (game-words)
+   ============================================ */
+
+#game-words h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#radio_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+#radio_buttons p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+#radio_buttons label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1rem;
+    font-weight: 500;
+    color: #4a5568;
+    min-width: 200px;
+    justify-content: center;
+}
+
+#radio_buttons label:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+/* Custom Radio Button Styling */
+#radio_buttons input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #cbd5e0;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+#radio_buttons input[type="radio"]:checked {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    transform: scale(1);
+}
+
+#radio_buttons input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+/* Choices container (dinamik olarak eklenen radio buttons) */
+#choices {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    min-height: 100px;
+}
+
+#choices p {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    /* Limit width on large screens */
+    margin: 0;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+}
+
+#choices p:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+/* Dinamik olarak eklenen radio button ve label çiftleri */
+#choices input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #cbd5e0;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0;
+    margin-right: 1rem;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+#choices input[type="radio"]:checked {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+#choices input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+#choices label {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #4a5568;
+    width: auto;
+    flex: 1;
+    /* Take remaining space */
+    justify-content: flex-start;
+    /* Align text to start */
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+/* Hover effect moved to p container */
+#choices label:hover {
+    background: transparent;
+    border-color: transparent;
+    transform: none;
+    box-shadow: none;
+}
+
+
+
+/* Radio button error state - seçilmeden ilerleme yapılmaya çalışıldığında */
+#radio_buttons label.error-shake,
+#choices label.error-shake {
+    animation: shakeError 0.5s ease-in-out;
+    border-color: #e53e3e !important;
+    background: rgba(229, 62, 62, 0.1) !important;
+    color: #e53e3e !important;
+}
+
+/* Also apply shake to the container p if needed, or keeping label/input is fine. 
+   If we want the whole box to shake, we might need JS to add class to p.
+   For now, we keep existing logic but ensure style prioritization. */
+#choices p.error-shake {
+    animation: shakeError 0.5s ease-in-out;
+    border-color: #e53e3e !important;
+    background: rgba(229, 62, 62, 0.1) !important;
+}
+
+#radio_buttons input[type="radio"].error-shake,
+#choices input[type="radio"].error-shake {
+    border-color: #e53e3e !important;
+    animation: shakeError 0.5s ease-in-out;
+}
+
+@keyframes shakeError {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+/* ============================================
+   GAME SETTINGS SECTION (game-settings)
+   ============================================ */
+
+#game-settings h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 2.5rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#game-settings p {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+#game-settings label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    width: 100%;
+    cursor: pointer;
+}
+
+#game-settings input[type="number"] {
+    width: 100px;
+    text-align: center;
+    padding: 0.6rem;
+}
+
+/* Number Input Styling */
+input[type="number"] {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #2d3748;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), 0 4px 12px rgba(102, 126, 234, 0.15);
+    transform: translateY(-2px);
+}
+
+input[type="number"]:hover {
+    border-color: #cbd5e0;
+}
+
+input[type="number"]::placeholder {
+    color: #a0aec0;
+}
+
+/* Input error state */
+input[type="number"].error-shake {
+    border-color: #e53e3e;
+    background: rgba(229, 62, 62, 0.05);
+    animation: shakeError 0.5s ease-in-out;
+}
+
+input[type="number"].error-shake:focus {
+    border-color: #e53e3e;
+    box-shadow: 0 0 0 4px rgba(229, 62, 62, 0.1), 0 4px 12px rgba(229, 62, 62, 0.15);
+}
+
+/* Responsive adjustments for word-choices and game-settings */
+@media (max-width: 768px) {
+
+    #game-words h2,
+    #game-settings h2 {
+        font-size: 1.5rem;
+    }
+
+    #radio_buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #radio_buttons label {
+        min-width: auto;
+        width: 100%;
+    }
+
+    #choices label {
+        max-width: 100%;
+    }
+
+    #choices p {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Table styling */
+.table {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: tableFadeIn 0.6s ease-out;
+}
+
+@keyframes tableFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: left;
+}
+
+.table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover td {
+    background-color: rgba(102, 126, 234, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #game_category {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .progress {
+        width: 100%;
+        max-width: 100%;
+    }
+}

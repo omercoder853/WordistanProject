@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Collection Details{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'translate/css/collection_details.css' %}">
+{% endblock %}
+{% block content %}
+<p id="coll_name_hold" hidden>{{coll_name}}</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="4">
+                <div class="coll_details_area">
+                    <div class="coll_header">
+                        <h1 id="coll_title"></h1>
+                        <hr>
+                        <span id="coll_desc"></span>
+                    </div>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Word</th>
+            <th>Meaning</th>
+        </tr>
+    </thead>
+    <tbody id="coll_table_body"></tbody>
+</table>
+<script src="{% static 'translate/scripts/collection_details.js' %}"></script>
+{% endblock %}

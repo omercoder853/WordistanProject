@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dict Details{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'translate/css/dict_details.css' %}">
+{% endblock %}
+
+{% block content %}
+<p hidden id="dict_id_hold">{{ dict_id }}</p>
+<table>
+    <thead>
+        <tr>
+            <th colspan="4">
+                <div class="dict_details_area">
+                    <div class="dict_header">
+                        <h1 id="dict_title"></h1>
+                        <span id="dict_direction"></span>
+                        <hr>
+                        <h4 id="dict_desc"></h4>
+                    </div>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <th>ID</th>
+            <th>Word</th>
+            <th>Meaning</th>
+            <th>Added at</th>
+        </tr>
+    </thead>
+    <tbody id="dict_table_body"></tbody>
+</table>
+
+
+
+
+<script src="{% static 'translate/scripts/dict_details.js' %}"></script>
+
+{% endblock %}

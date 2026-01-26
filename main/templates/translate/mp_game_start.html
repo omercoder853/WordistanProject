@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}MP Game{% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static 'translate/css/mp_game_start.css' %}">{% endblock %}
+{% block content %}
+<div id="game_area">
+    <h1>Matching Pairs <br> <span id="dict_name"></span></h1>
+    <div id="question_area" class="row">
+        <div class="col" id="words_column"></div>
+        <div class="col" id="answers_column"></div>
+    </div>
+
+    <div id="control_buttons">
+        <button id="past_button" class="control__button">Back</button>
+        <p id="counter"></p>
+        <p id="timer_area"><span id="minutes"></span>:<span id="seconds"></span></p>
+        <button id="next_button" class="control__button">Next</button>
+    </div>
+</div>
+<div id="game_result">
+    <div id="mascot_area">
+        <img src="{% static 'translate/images/mascot.png' %}" alt="mascot" id="mascot">
+        <div id="motivation">
+            <h1>KEEP</h1>
+            <h1>MOVING</h1>
+            <h1>FORWARD</h1>
+        </div>
+    </div>
+    <div class="row" id="result_row">
+        <div id="total_question_area" class="col-sm-3 results_info_area">
+            <p>Total</p>
+            <span id="total_question" class="results_info"></span>
+        </div>
+        <div id="total_try_area" class="col-sm-3 results_info_area">
+            <p>Total Try</p>
+            <span id="total_try" class="results_info"></span>
+        </div>
+        <div id="time_passed_area" class="col-sm-3 results_info_area">
+            <p>Time</p>
+            <span id="time_passed" class="results_info"></span>
+        </div>
+        <div id="success_area" class="col-sm-3 results_info_area">
+            <p>Success</p>
+            <span id="success" class="results_info"></span>
+        </div>
+    </div>
+</div>
+
+
+<script src="{% static 'translate/scripts/mp_game_start.js' %}" type="module"></script>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/accounts/css/logout.css">
+</head>
+
+<body>
+    <h1>See you later!!</h1>
+    <br>
+    <h3>You will be redirect in <span id="second"></span> seconds <br>or you can go
+            directly the<a href="{% url 'home' %}"> home page</a></h3>
+    <script>
+        let seconds = 5;
+        const second_area = document.getElementById("second");
+        const home_url = "{% url 'home' %}";
+        const intervalId = setInterval(function () {
+            second_area.innerHTML = seconds;
+            if (seconds == 0) {
+                clearInterval(intervalId);
+                window.location.replace(home_url) 
+            }
+            seconds--;
+        }, 1000)
+    </script>
+</body>
+
+</html>

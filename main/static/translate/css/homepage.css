@@ -1,0 +1,33 @@
+#hero {
+    padding-top: 80px;
+  background: linear-gradient(135deg, #b565f5, #e86ad0, #cfa9f5, #f4f4f4);
+  background-size: 300% 300%;
+  animation: gradientFlow 8s ease infinite;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#hero_container
+{
+    margin-top: 80px;
+}
+
+#features_homepage
+{
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.container.marketing
+{
+  padding: 20px;
+}

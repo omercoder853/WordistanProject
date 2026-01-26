@@ -1,0 +1,126 @@
+body
+{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, rgba(248, 243, 255, 0.5), rgba(252, 238, 245, 0.5));
+    background-size: 200% 200%;
+    animation: backgroundGradient 8s ease infinite;
+    margin: 0;
+    padding: 20px;
+}
+
+@keyframes backgroundGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+h1
+{
+    display: block;
+    color: #6b3fa0;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0 0 30px 0;
+    text-align: center;
+    background: linear-gradient(135deg, #b565f5, #e86ad0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInDown 0.8s ease, pulse 2s ease-in-out infinite;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+h3 
+{
+    display: block;
+    color: #555;
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.8;
+    margin: 0;
+    padding: 30px 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 243, 255, 0.95));
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(181, 101, 245, 0.15);
+    border: 3px solid rgba(181, 101, 245, 0.3);
+    animation: fadeInUp 1s ease;
+    max-width: 600px;
+    transition: all 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h3:hover {
+    box-shadow: 0 12px 35px rgba(181, 101, 245, 0.25);
+    transform: translateY(-3px);
+    border-color: rgba(181, 101, 245, 0.5);
+}
+
+h3 #second
+{
+    color: #b565f5;
+    font-weight: 700;
+    font-size: 1.5rem;
+    animation: countdownPulse 1s ease infinite;
+}
+
+@keyframes countdownPulse {
+    0%, 100% {
+        transform: scale(1);
+        color: #b565f5;
+    }
+    50% {
+        transform: scale(1.2);
+        color: #e86ad0;
+    }
+}
+
+h3 a
+{
+    color: #b565f5;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+}
+
+h3 a:hover {
+    color: #e86ad0;
+    border-bottom-color: #e86ad0;
+    transform: translateY(-1px);
+}
+

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Collections{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'translate/css/collections.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Collections</h1>
+<div class="row">
+    <div class="col-sm-4 mb-3 mb-sm-2">
+        <a href="{% url 'collection_details' coll_name='fruitsVegetables' %}">
+            <div class="card">
+                <img src="{% static 'translate/images/fruitsVegetables.jpg' %}" class="card-img-top" alt="fruits&vegetables">
+                <div class="card-body">
+                    <h5 class="card-title">Fruits and Vegetables</h5>
+                    <p class="card-text">This collection includes 30 different words about fruits and vegetables.</p>
+                    <p class="small">A1-A2</p>
+                    <p class="small">TR - ENG</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-sm-4 mb-3 mb-sm-2">
+        <a href="{% url 'collection_details' coll_name='animals' %}">
+            <div class="card">
+                <img src="{% static 'translate/images/animals.jpg' %}" class="card-img-top" alt="animals">
+                <div class="card-body">
+                    <h5 class="card-title">Animals</h5>
+                    <p class="card-text">This collection includes 20 different words about animals.</p>
+                    <p class="small">A1-A2</p>
+                    <p class="small">TR - ENG</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-sm-4 mb-3 mb-sm-2">
+        <a href="{% url 'collection_details' coll_name='places' %}">
+            <div class="card">
+                <img src="{% static 'translate/images/places.jpg' %}" class="card-img-top" alt="fruits&vegetables">
+                <div class="card-body">
+                    <h5 class="card-title">Environment and Places</h5>
+                    <p class="card-text">This collection includes 30 different words about environment and places</p>
+                    <p class="small">A1-A2</p>
+                    <p class="small">TR - ENG</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

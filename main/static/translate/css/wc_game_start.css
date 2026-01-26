@@ -1,0 +1,208 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#game_area
+{
+    margin-top: 50px;
+    width: 60%;
+    background-color: rgba(9, 239, 220, 0.2);
+    border-radius: 25px;
+    padding: 1.6rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+#question_area
+{
+    padding: 1rem;
+    text-align: center;
+    background-color: aliceblue;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+#check_button
+{
+    position: absolute;
+    border-radius: 10px;
+    padding: 1rem;
+    right: 1.1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: green;
+    color: white;
+    font-weight: bolder;
+    border: 1px solid black;
+}
+
+#question_area p
+{
+    margin: 0px;
+    padding: 0px;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.letters_row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+
+}
+
+#control_buttons
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.control__button
+{
+    border-radius: 15px;
+    padding: 8px 12px 8px 12px;
+}
+
+.letter_input{
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: x-large;
+    border-radius: 5px;
+    border: 0px;
+    font-weight: bolder;
+}
+.letter_div {
+    width: 3.9rem;
+    height: 3.9rem;
+    background-color: rgb(198, 175, 201);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#game_result
+{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 60%;
+    background-color: rgba(237, 152, 135, 0.15);
+    border-radius: 25px;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+.result_row{
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: 0.7rem;
+    width: 60%;
+}
+.row p{
+    margin: 0px;
+    padding: 0.62rem;
+    color: white;
+    font-weight: bolder;
+}
+#mascot_area{
+    width: 100%;
+    display: flex;
+    margin: 0px;
+    justify-content: center;
+    align-items: center;
+}
+#motivation{
+    display: flex;
+    flex-direction: column;
+    animation: opacity_toleft 3s forwards;
+}
+#motivation h1{
+    font-size: 4rem;
+}
+#mascot
+{
+    max-width: 20rem;
+    animation: move_left 3s forwards;
+}
+
+@keyframes move_left {
+    from {
+        transform: translateX(15rem);
+    }
+    to {
+        transform: translateX(-1rem);
+    }
+}
+@keyframes opacity_toleft
+{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.results_info_area
+{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-left: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+#total_question_area
+{
+    background-color: blue;
+}
+#true_answers_area
+{
+    background-color: green;
+}
+#wrong_answers_area
+{
+    background-color: red;
+}
+#passed_questions_area
+{
+    background-color: orange;
+}
+#time_passed_area
+{
+    background-color: gray;
+}
+#success_area
+{
+    background-color: purple;
+    margin-left: 2rem;
+}
+
+.results_info
+{
+    text-align: center;
+    background-color: white;
+    width: 75%;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
