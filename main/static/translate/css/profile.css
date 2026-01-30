@@ -134,3 +134,12 @@ hr {
     background-color: #4b0082;
     color: white;
 }
+
+.dictDetailInfo{
+    padding: 10px 15px 10px 15px;
+    background-color: #4b0082;
+    color: #fff;
+    width: fit-content;
+    border-radius: 25px;
+    font-size: small;
+}

@@ -52,19 +52,19 @@
               <div class="text-center">
                 <p class="h4 fw-bold mb-0 text-primary">143</p>
                 <small class="text-muted text-uppercase"
-                  style="font-size: 0.75rem; letter-spacing: 0.5px;">Words</small>
+                  style="font-size: 0.75rem; letter-spacing: 0.5px;">Translated Words</small>
               </div>
               <div class="vr d-none d-md-block bg-secondary opacity-25"></div>
               <div class="text-center">
-                <p class="h4 fw-bold mb-0 text-primary">12</p>
+                <p class="h4 fw-bold mb-0 text-primary"><span id="numberDict"></span></p>
                 <small class="text-muted text-uppercase"
                   style="font-size: 0.75rem; letter-spacing: 0.5px;">Dicts</small>
               </div>
               <div class="vr d-none d-md-block bg-secondary opacity-25"></div>
               <div class="text-center">
-                <p class="h4 fw-bold mb-0 text-primary">02/25</p>
+                <p class="h4 fw-bold mb-0 text-primary">43</p>
                 <small class="text-muted text-uppercase"
-                  style="font-size: 0.75rem; letter-spacing: 0.5px;">Joined</small>
+                  style="font-size: 0.75rem; letter-spacing: 0.5px;">Saved Words</small>
               </div>
             </div>
           </div>
@@ -112,16 +112,9 @@
           </div>
         </div>
       </div>
+      <hr>
       <section id="my-dictionaries" class="py-5">
-        <h4>Sözlüklerim</h4>
-        <div id="dict-eng" class="mt-4 p-3 bg-light rounded">
-          <h5>İngilizce-Türkçe</h5>
-          <p>120 kayıtlı kelime. Son çalışma: Dün.</p>
-        </div>
-        <div id="dict-spa" class="mt-3 p-3 bg-light rounded">
-          <h5>İspanyolca Fiiller</h5>
-          <p>45 kayıtlı kelime. Son çalışma: 2 saat önce.</p>
-        </div>
+        <h4>My Dictionaries</h4>
       </section>
       <hr />
       <section id="achievements" class="py-5 border-top">
@@ -130,6 +123,10 @@
     </div>
   </div>
 </div>
-
+{% url 'dict_details' dict_id=0 as base_url_val %}
+{{ base_url_val|json_script:"baseurl-data" }}
+<script>
+  window.imageSrc = "{% static 'translate/images/dictionaryCoverPhoto.jpg' %}"
+</script>
 <script src="{% static 'translate/scripts/profile.js' %}"></script>
 {% endblock %}

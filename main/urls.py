@@ -24,7 +24,7 @@ urlpatterns = [
     path("game_start/game_type=<str:game_type>/",views.game_start,name="game_start"),
     path("profile/",views.profile , name="profile"),
     # API endpoints for dictionaries
-    path("api/dictionaries/", views.dictionaries_list, name="dictionaries_list"),
+    path("api/dictionaries", views.dictionaries_list, name="dictionaries_list"),
     path("api/dictionaries/add/", views.dictionaries_add, name="dictionaries_add"),
     path("api/dictionaries/<int:dict_id>/delete/", views.dictionaries_delete, name="dictionaries_delete"),
     # API endpoints for words

@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Backend'den sözlükleri fetch edip render et
 function loadAndRenderDictionaries() {
-    fetch('/api/dictionaries/')
+    fetch('/api/dictionaries')
         .then(res => {
             if (!res.ok) {
                 throw new Error(`HTTP error! status: ${res.status}`);
