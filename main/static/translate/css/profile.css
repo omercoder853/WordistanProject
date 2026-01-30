@@ -143,3 +143,123 @@ hr {
     border-radius: 25px;
     font-size: small;
 }
+
+.lock-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--bs-border-radius-sm);
+  z-index: 1000;
+}
+
+.badge-container.locked .badge-icon {
+  filter: grayscale(1) blur(1px);
+  opacity: 0.6;
+}
+
+.cardImage{
+    background-color: white;
+    border-radius: 25px;
+}
+
+/* Bronze Kart Temel Yapısı */
+.bronze-theme {
+    position: relative;
+    overflow: hidden; /* Animasyonun dışarı taşmaması için */
+    background: linear-gradient(135deg, #804a00 0%, #b08d57 50%, #804a00 100%);
+    border: 2px solid #cd7f32;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+/* Soldan Sağa Akıcı Parlama Efekti */
+.bronze-theme::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%; /* Başlangıçta kartın dışında solda */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2), /* Parlama rengi */
+        transparent
+    );
+    transition: none;
+    animation: bronze-flow 3s infinite; /* Sürekli akış */
+}
+
+/* Akış Animasyonu */
+@keyframes bronze-flow {
+    0% {
+        left: -150%;
+    }
+    50% {
+        left: 150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+/* Hover Efekti: Kartın biraz büyümesi */
+.bronze-theme:hover {
+    transform: translateY(-5px);
+    border-color: #ffd39b;
+}
+/* Silver-Theme Kart Yapısı */
+.silver-theme {
+    position: relative;
+    overflow: hidden;
+    /* Metalik gümüş gradyanı */
+    background: linear-gradient(135deg, #bdc3c7 0%, #e6e9ed 50%, #bdc3c7 100%);
+    border: 2px solid #aab2bd;
+    color: #333; /* Gümüş üzerinde koyu gri yazı daha net okunur */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* Akıcı Parlama Efekti */
+.silver-theme::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4), 
+        transparent
+    );
+    animation: silver-flow 3.5s infinite linear;
+}
+
+/* Gümüş Akış Animasyonu */
+@keyframes silver-flow {
+    0% {
+        left: -150%;
+    }
+    40% {
+        left: 150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+/* Hover: Kartın yükselme efekti */
+.silver-theme:hover {
+    transform: translateY(-5px);
+    border-color: #f5f7fa;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}

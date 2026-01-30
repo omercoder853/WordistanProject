@@ -31,5 +31,8 @@ urlpatterns = [
     path("api/words/dict_id-<int:dict_id>",views.words_list,name="word_list"),
     path("api/words/add/",views.word_add,name="word_add"),
     # API endpoints for achivements
-    path("api/word-translated",views.wordTranslated,name="word_translated")
+    path("api/word-translated",views.wordTranslated,name="word_translated"),
+    path("api/earned-achievements",views.earnedAchivements,name="earned_achivements"),
+    path("api/word-saved",views.wordSaved,name="word_saved")
+
 ]

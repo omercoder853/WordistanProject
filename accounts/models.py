@@ -32,6 +32,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     birth_date = models.DateField()
     max_streak = models.IntegerField(blank=True , default=0)
     translated_words = models.IntegerField(blank=True,default=0)
+    saved_words = models.IntegerField(blank=True,default=0)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)

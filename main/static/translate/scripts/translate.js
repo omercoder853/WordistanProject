@@ -116,6 +116,21 @@ function find_the_word(lang) {
     if (result) {
       document.getElementById("result").innerHTML = result.tr;
       document.getElementById("addMyDict").style.display = "flex";
+      fetch("api/word-translated")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json()
+      })
+      .then((data) => {
+        if (data.new_achivement) {
+          console.log("Yeni başarım : " + data.new_achivement)
+        }
+      })
+      .catch((err)=>{
+        console.log("Something went wrong: " , err.message)
+      })
     } else {
       document.getElementById("result").innerHTML = "Result not found!";
     }
@@ -241,6 +256,21 @@ function addWord(word, meaning, dict_id) {
     })
     .then((data) => {
       console.log("Word added succesfully:", data);
+      fetch("/api/word-saved")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json()
+      })
+      .then((data) => {
+        if (data.new_achivement) {
+          console.log("Yeni başarım : " + data.new_achivement)
+        }
+      })
+      .catch((err)=>{
+        console.log("Something went wrong: " , err.message)
+      })
     })
     .catch((error) => {
       console.error("Error adding word:", error);

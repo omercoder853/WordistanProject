@@ -190,4 +190,28 @@ def wordTranslated(request):
         obj , created = Achivements.objects.get_or_create(user = request.user , achivementId = 'translator_1')
         if created:
             new_badge = "Translator 1"
+    elif current_translated_words == 5:
+        obj , created = Achivements.objects.get_or_create(user = request.user , achivementId = 'translator_2')
+        if created:
+            new_badge = "Translator 2"
     return JsonResponse({"new_achivement" : new_badge})
+
+def earnedAchivements(request):
+    user = request.user
+    earned_achievements = list(Achivements.objects.filter(user=user).values_list('achivementId',flat=True))
+    return JsonResponse({"earned_achievements": earned_achievements})
+
+def wordSaved(request):
+    request.user.saved_words +=1
+    request.user.save(update_fields = ['saved_words'])
+    current_saved_words = request.user.saved_words
+    new_badge = None
+    if current_saved_words == 2:
+        obj , created = Achivements.objects.get_or_create(user = request.user , achivementId = 'archivist_1')
+        if created:
+            new_badge = "archivist_1"
+    elif current_saved_words==5:
+        obj , created = Achivements.objects.get_or_create(user = request.user , achivementId = 'archivist_2')
+        if created:
+            new_badge = "archivist_2"
+    return JsonResponse({"new_achivement" : new_badge}) 
