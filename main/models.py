@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 
 class Dictionary(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)  
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  
     name = models.CharField(max_length=30)  
     description = models.TextField(max_length=100, null=True, blank=True)
     language = models.CharField(max_length=20, default='TR to ENG') 
@@ -21,3 +21,10 @@ class Words(models.Model):
 
     def __str__(self):
         return f"{self.word} - {self.meaning}"
+
+class Achivements(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    achivementId = models.CharField(max_length=50)
+    earned_at = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        unique_together = ('user' , 'achivementId')

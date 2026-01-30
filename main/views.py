@@ -6,6 +6,7 @@ from django.views.decorators.http import require_http_methods
 import json
 from .models import Dictionary
 from .models import Words
+from .models import Achivements
 # Create your views here.
 
 def index(request):
@@ -177,3 +178,16 @@ def word_add(request):
         return JsonResponse({'error': 'Invalid JSON'}, status=400)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+    
+#-----------------------------------------------
+
+def wordTranslated(request):
+    request.user.translated_words += 1
+    request.user.save(update_fields=['translated_words'])
+    current_translated_words = request.user.translated_words
+    new_badge = None
+    if current_translated_words == 2:
+        obj , created = Achivements.objects.get_or_create(user = request.user , achivementId = 'translator_1')
+        if created:
+            new_badge = "Translator 1"
+    return JsonResponse({"new_achivement" : new_badge})

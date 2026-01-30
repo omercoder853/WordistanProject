@@ -91,10 +91,27 @@ function find_the_word(lang) {
     if (result) {
       document.getElementById("result").innerHTML = result.en;
       document.getElementById("addMyDict").style.display = "flex";
-    } else {
+      fetch("api/word-translated")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json()
+      })
+      .then((data) => {
+        if (data.new_achivement) {
+          console.log("Yeni başarım : " + data.new_achivement)
+        }
+      })
+      .catch((err)=>{
+        console.log("Something went wrong: " , err.message)
+      })
+    } 
+    else {
       document.getElementById("result").innerHTML = "Result not found!";
     }
-  } else if (lang == "enTotr") {
+  } 
+  else if (lang == "enTotr") {
     let result = source_dictionary.find((item) => item.en === word);
     if (result) {
       document.getElementById("result").innerHTML = result.tr;
