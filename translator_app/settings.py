@@ -31,7 +31,7 @@ if ENVIRONMENT == 'development':
 else:
     DEBUG=False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.4']
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 # Application definition
@@ -126,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     BASE_DIR / "common_static"
 ]

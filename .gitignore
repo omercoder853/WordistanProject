@@ -43,3 +43,4 @@ Thumbs.db
 # Media files (user uploads varsa)
 # ===============================
 media/
+static/
