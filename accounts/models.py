@@ -29,7 +29,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     nick_name = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateField()
+    birth_date = models.DateField(blank=True,null=True)
     max_streak = models.IntegerField(blank=True , default=0)
     translated_words = models.IntegerField(blank=True,default=0)
     saved_words = models.IntegerField(blank=True,default=0)
