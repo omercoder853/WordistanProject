@@ -162,7 +162,7 @@ input[type="password"]::placeholder
     color: #aaa;
 }
 
-input[type="submit"]
+#login_button
 {
     margin: auto;
     width: 150px;
@@ -181,7 +181,7 @@ input[type="submit"]
     animation: fadeInUp 1.2s ease;
 }
 
-input[type="submit"]::before {
+#login_button::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -194,18 +194,18 @@ input[type="submit"]::before {
     transition: width 0.6s, height 0.6s;
 }
 
-input[type="submit"]:hover::before {
+#login_button:hover::before {
     width: 300px;
     height: 300px;
 }
 
-input[type="submit"]:hover {
+#login_button:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 25px rgba(181, 101, 245, 0.5),
                 0 2px 10px rgba(232, 106, 208, 0.3);
 }
 
-input[type="submit"]:active {
+#login_button:active {
     transform: translateY(-1px);
     box-shadow: 0 3px 15px rgba(181, 101, 245, 0.4);
 }

@@ -7,6 +7,10 @@ from django.urls import path
 
 urlpatterns = [
     path("login",views.login_page, name="login"),
-    path("logout",views.logout_user,name="logout"),
-    path("register",views.register,name="register")
+    path("logout",views.logout_page,name="logout"),
+    path("register",views.register,name="register"),
+    #---------------------------
+    path("api/login",views.user_login,name="user_login"),
+    path("api/logout",views.logout_user,name="user_logout"),
+    path("api/register",views.user_register,name="user_register")
 ]

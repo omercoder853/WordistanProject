@@ -224,10 +224,12 @@ function saveButton() {
   const base_url = JSON.parse(base_url_data.textContent);
   const seeDictButton = document.getElementById("seeDict");
   seeDictButton.href = base_url.replace("0", dict_id);
+  seeDictButton.href = base_url.replace("0",dict_id)
   console.log("The word: " + word);
   console.log("The meaning: " + meaning);
   console.log("The dict id: " + dict_id);
-  addWord(word, meaning, dict_id);
+  addWord(word, meaning, dict_id)
+
 }
 
 function addWord(word, meaning, dict_id) {
@@ -236,13 +238,13 @@ function addWord(word, meaning, dict_id) {
     return false;
   }
 
-  fetch("/api/words/add/", {
-    method: "POST",
+  fetch(`api/words/add/dict_id-${dict_id}`, {
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       "X-CSRFToken": csrftoken,
     },
-    body: JSON.stringify({ dict_id, word, meaning }),
+    body: JSON.stringify({ word, meaning }),
   })
     .then((res) => {
       console.log("Save response status:", res.status);

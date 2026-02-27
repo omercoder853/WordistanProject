@@ -151,7 +151,7 @@ function deleteDictionary(dictId) {
     if (!confirm('Are you sure you want to delete this dictionary?')) return;
 
     fetch(`/api/dictionaries/${dictId}/delete/`, {
-        method: 'POST',
+        method: 'DELETE',
         headers: {
             'X-CSRFToken': csrftoken
         }
@@ -162,10 +162,10 @@ function deleteDictionary(dictId) {
                 throw new Error(data.error || 'Failed to delete dictionary');
             });
         }
-        return res.json();
     })
     .then(() => {
-        loadAndRenderDictionaries(); // listeyi yeniden yükle
+        alert("The deleting operation is successfull!")
+        loadAndRenderDictionaries();
     })
     .catch(error => {
         console.error('Error deleting dictionary:', error);

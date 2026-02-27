@@ -1,5 +1,4 @@
 const dict_id = document.getElementById("dict_id_hold").textContent
-console.log(dict_id)
 document.addEventListener('DOMContentLoaded',(event)=>{
     fetch(`/api/words/dict_id-${dict_id}`)
         .then(res=>{
@@ -27,11 +26,11 @@ document.addEventListener('DOMContentLoaded',(event)=>{
                 const title_area = document.getElementById("dict_title");
                 const desc_area = document.getElementById("dict_desc");
                 const lang_area = document.getElementById("dict_direction");
-                title_area.textContent = data[0]['dict_name'];
-                desc_area.textContent = data[0]['dict_desc']; 
-                lang_area.textContent = data[0]["language"];
+                title_area.textContent = data.name;
+                desc_area.textContent = data.description; 
+                lang_area.textContent = data.language;
                 const table_body = document.getElementById("dict_table_body")
-                const words = data[0]['words'];
+                const words = data.words;
                 for (let index = 0; index < words.length; index++) {
                     const new_row = document.createElement('tr');
                     const new_data_id = document.createElement('td');

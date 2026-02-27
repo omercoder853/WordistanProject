@@ -1,5 +1,9 @@
 const dictionarySection = document.getElementById("my-dictionaries")
 document.addEventListener("DOMContentLoaded", () => {
+  const logoutButton = document.getElementById("logout-button")
+  logoutButton.addEventListener('click',(event)=>{
+    logout();})
+
   fetch("/api/dictionaries")
     .then((res) => {
       if (!res.ok) {
@@ -138,3 +142,38 @@ document.addEventListener("DOMContentLoaded", () => {
           newCard.append(new_row)
           newCol.appendChild(newCard)
           achivementRow.appendChild(newCol)})}})});
+
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+function logout(){
+    fetch('/api/logout', {
+        method:"POST",
+        headers:{
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
+        },
+        credentials:'same-origin'
+    }).then((res)=>{
+        if (res.status==200) {
+            window.location.href = "/logout"
+        }
+        else{
+            alert("Not logged out!!")
+        }
+    })
+}
+
