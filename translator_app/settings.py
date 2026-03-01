@@ -31,7 +31,13 @@ if ENVIRONMENT == 'development':
 else:
     DEBUG=False
 
-ALLOWED_HOSTS = ['192.168.1.4']
+ALLOWED_HOSTS = ['192.168.1.4','terribilita-milissa-unpermitted.ngrok-free.dev']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://terribilita-milissa-unpermitted.ngrok-free.dev',
+    'http://127.0.0.1',
+    'http://localhost'
+]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 # Application definition
@@ -114,6 +120,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ]}
 
 

@@ -5,8 +5,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
-from .serializers import RegisterSerializer
-
+from .serializers import RegisterSerializer,MyTokenObtainSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 def login_page(request):
     return render(request,"accounts/login.html")
 
@@ -40,6 +40,10 @@ def user_register(request):
         serializer.save()
         return Response({"message":"Welcome to Wordistan","user":serializer.data},status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#------------------------------------------
+class MyTokenObtainView(TokenObtainPairView):
+    serializer_class = MyTokenObtainSerializer
 
 
 
