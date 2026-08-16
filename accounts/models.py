@@ -25,14 +25,13 @@ class CustomUserManager(BaseUserManager):
 
 # Custom User modeli (database table)
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    GENDER_CHOICES = [("male","Male"),("female","Female"),("other","Other")]
     email = models.EmailField(unique=True)  # Login için email
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     nick_name = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(blank=True,null=True)
-    max_streak = models.IntegerField(blank=True , default=0)
-    translated_words = models.IntegerField(blank=True,default=0)
-    saved_words = models.IntegerField(blank=True,default=0)
+    gender = models.CharField(blank=True,null=True,choices=GENDER_CHOICES)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
